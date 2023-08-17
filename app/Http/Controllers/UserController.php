@@ -214,7 +214,6 @@ class UserController extends Controller
 
         //Recoger datos de la peticio
         $image = $request->file('file0');
-        die($image);
 
         // Validacion de imagen
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Http\Middleware\ApiAuthMiddleware;
 
 class ApiAuthMiddleware
 {
@@ -16,6 +17,21 @@ class ApiAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        // Comprobar que el usuario esta idetificado
+        $token = $request->header('Authorization');
+        $jwtAuth = new \JwtAuth;
+        $checkToken = $jwtAuth->checkToken($token);
+        
+
+        if ($checkToken){
+            return $next($request);
+        }else {
+            $data = array(
+                'code'      => 400,
+                'status'    => 'error',
+                'message'   => 'El usuario no esta identificado'
+            );
+            return response()->json($data,$data['code']);
+        }
     }
 }
