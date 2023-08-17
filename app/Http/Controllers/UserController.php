@@ -14,7 +14,7 @@ class UserController extends Controller
         $estiloH1='style="color:blue;"';
         $estiloSpan='style="color:green; font-weight:bold;"';
         $mensaje = "<h1 {{ $estiloH1 }}> Si ve el login : <span {{ $estiloSpan }}>".$json[0]['user_login']."</span> se encuentra funcionando el Controlador 'UserController'</h1> <br />";
-        echo $mensaje;
+        return $mensaje;
     }
 
     public function registrar (Request $request){
@@ -33,7 +33,7 @@ class UserController extends Controller
         $params = json_decode($json);
         $params_array = json_decode($json,true);
 
-        var_dump($params); die('Fin');
+        //var_dump($params); die('Fin');
         //var_dump($params_array); die('Fin');  
   
         if(!empty($params) && !empty($params_array)) {

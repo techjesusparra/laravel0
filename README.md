@@ -7,7 +7,7 @@
 ## Base de Datos ## <br />
 **Tabla:** _users_ <br />
 **Estructura de la tabla users** <br />
-<image src="./sql/users.png" alt="Descripción de la imagen">
+<img src="./sql/users.png" alt="Tabla User" title="Tabla User">
 
 ### Paso 1. Crear un nuevo proyecto a partir de este ### <br />
 git clone https://github.com/techjesusparra/laravel0.git nuevo_proyecto <br />
