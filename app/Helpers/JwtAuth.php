@@ -19,8 +19,8 @@
         
             // Buscar el usuario si existe con sus credeciales
             $user = User::Where([
-                'email' => $email,
-                'password' => $password
+                'user_email' => $email,
+                'user_pass' => $password
             ])->first();
 
             // Comprobar si son correctas (objeto)
@@ -33,7 +33,7 @@
             if($signup){
                 $token = array(
                     'sub'     => $user->id,
-                    'email'   => $user->email,  
+                    'email'   => $user->user_email,  
                     'name'    => $user->name,
                     'surname' => $user->surname,
                     'iat'     => time(), 

@@ -44,10 +44,13 @@ class UserController extends Controller
                   
                   //   3. Validar los datos
                   $validate = Validator::make($params_array, [
-                      'name'      => 'required|alpha',
-                      'surname'   => 'required|alpha',
-                      'email'     => 'required|email|unique:users',
-                      'password'  => 'required'    
+                      'user_login'      => 'required|unique:users',
+                      'name'            => 'required|alpha',
+                      'surname'         => 'required|alpha',
+                      'user_pass'       => 'required',
+                      'user_nicename'   => 'required|alpha|unique:users',
+                      'user_email'      => 'required|email|unique:users',
+                      'user_registered' => 'required|date_format:Y-m-d H:i:s'                 
                   ]);
   
                   if ($validate->fails()){
@@ -63,18 +66,25 @@ class UserController extends Controller
   
                           //   4. Cifrar cotraseña 
                           //$pwd = password_hash($params->password, PASSWORD_BCRYPT,['cost' => 4]);
-                          $pwd = hash ('SHA256',$params->password);
+                          $user_pwd = hash ('SHA256',$params->user_pass);
                           
                           //   5. Validar que el usuario no este duplicado
                           //   R : Ya se tine $validate con la validacion
                           
                           //   6. Crear el usuario y notificar si fue exitoso o no 
                           $Usuario = new User();
+                          $Usuario->user_login = $params_array['user_login'];
                           $Usuario->name = $params_array['name'];
                           $Usuario->surname = $params_array['surname'];
                           $Usuario->role_user = 'ROLE_USUARIO';
-                          $Usuario->email = $params_array['email'];
-                          $Usuario->password = $pwd;
+                          $Usuario->user_pass = $user_pwd;
+                          $Usuario->user_nicename = $params_array['user_nicename'];
+                          $Usuario->user_email = $params_array['user_email'];
+                          $Usuario->image = $params_array['image'];
+                          $Usuario->description = $params_array['description'];
+                          //$Usuario->user_url = $params_array['user_url'];
+                          $Usuario->user_registered = $params_array['user_registered'];
+                          //$Usuario->user_activation_key = $params_array['user_activation_key'];
                            
                           //var_dump($Usuario); die('Fi');
   
@@ -112,8 +122,8 @@ class UserController extends Controller
 
         // Validar esos datos
         $validate = Validator::make($params_array, [
-            'email'     => 'required|email',
-            'password'  => 'required'    
+            'user_email'     => 'required|email',
+            'user_pass'  => 'required'    
         ]);
 
         if ($validate->fails()){
@@ -126,13 +136,13 @@ class UserController extends Controller
                 
         } else {
             // Cifrar el password
-            $pwd = hash ('SHA256',$params->password); 
+            $user_pwd = hash ('SHA256',$params->user_pass); 
 
             // Devolver token o datos
-            $signup = $jwtAuth->signup($params->email, $pwd);
+            $signup = $jwtAuth->signup($params->user_email, $user_pwd);
             
             if (!empty($params->gettoken)){
-                $signup = $jwtAuth->signup($params->email, $pwd, true);
+                $signup = $jwtAuth->signup($params->user_email, $user_pwd, true);
             }
         }   
 
@@ -204,6 +214,7 @@ class UserController extends Controller
 
         //Recoger datos de la peticio
         $image = $request->file('file0');
+        die($image);
 
         // Validacion de imagen
 
