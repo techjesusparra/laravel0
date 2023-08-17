@@ -18,10 +18,14 @@ Crear una base de dato e insertar un usuario administrador de la aplicacion
 Es script lo encontrar en el directorio **SQL** dentro del proyecto con el nombre de **laravel0-DB.sql**, puede opcionalmente modificar los datos antes de realizar el insert.
 
 DB_CONNECTION=_mysql_ <br />
-DB_HOST=_<Servidor de la base de datos>_ <br />
+DB_HOST=_Servidor de la base de datos>_ <br />
 DB_PORT=_3306_ <br />
-DB_DATABASE=_<Nombre de la base de datos>_ <br />
-DB_USERNAME=_<Usuario de la base de datos>_ <br />
-DB_PASSWORD=_<Contraseña>_ <br />
+DB_DATABASE=_Nombre de la base de datos_ <br />
+DB_USERNAME=_Usuario de la base de datos_ <br />
+DB_PASSWORD=_Contraseña_ <br />
 
 ### Paso 2. Prueba del ORM del Modelo Usuario ### <br />
+En el navegador de su preferencia escriba la siguiente direccion
+http://localhost/usuario/testuser
+
+Nota: reemplace **localhost**, por la direccion *IP* o *url* del servidor
