@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function testuser(Request $request){
-        $estilo='style="color:blue;"';
-        return "<h1 {{ $estilo }}>El controlador 'UserController' se encuentra funcionando correctamente</h1>";        
+    public function testOrm(Request $request){
+        $json = User::all();
+        $estiloH1='style="color:blue;"';
+        $estiloSpan='style="color:green; font-weight:bold;"';
+        $mensaje = "<h1 {{ $estiloH1 }}> Si ve el login : <span {{ $estiloSpan }}>".$json[0]['user_login']."</span> se encuentra funcionando el Controlador 'UserController'</h1> <br />";
+        echo $mensaje;
     }
 
     public function registrar (Request $request){
@@ -29,7 +32,8 @@ class UserController extends Controller
         $json = $request->input('json', null);
         $params = json_decode($json);
         $params_array = json_decode($json,true);
-        //var_dump($params); die('Fin');
+
+        var_dump($params); die('Fin');
         //var_dump($params_array); die('Fin');  
   
         if(!empty($params) && !empty($params_array)) {

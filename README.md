@@ -32,11 +32,13 @@ CREATE TABLE `users` ( <br />
 ) ENGINE=InnoDB  AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci; <br />
 
 
-## Clonar el proyecto ## <br />
+### Paso 1. Crear un nuevo proyecto a partir de este ### <br />
 git clone https://github.com/techjesusparra/laravel0.git nuevo_proyecto <br />
 
 ## Configuraciones ## <br />
-### Conexion a la base de datos ### <br />
+### Paso 2. Creacion de una base de datos y su configuracion ### <br />
+Crear una base de dato e insertar un usuario administrador de la aplicacion
+Es script lo encontrar en el directorio **SQL** dentro del proyecto con el nombre de **laravel0-DB.sql**, puede opcionalmente modificar los datos antes de realizar el insert.
 
 DB_CONNECTION=_mysql_ <br />
 DB_HOST=_<Servidor de la base de datos>_ <br />
@@ -44,3 +46,5 @@ DB_PORT=_3306_ <br />
 DB_DATABASE=_<Nombre de la base de datos>_ <br />
 DB_USERNAME=_<Usuario de la base de datos>_ <br />
 DB_PASSWORD=_<Contraseña>_ <br />
+
+### Paso 2. Prueba del ORM del Modelo Usuario ### <br />

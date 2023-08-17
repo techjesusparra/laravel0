@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 
 
 // Prueba de UserController
-Route::get('/usuario/testuser',[UserController::class,'testuser']);
+Route::get('/usuario/testuser',[UserController::class,'testOrm']);
 
 // UserController
 Route::post('/api/registrar',[UserController::class,'registrar']);
