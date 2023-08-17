@@ -4,7 +4,7 @@
 **Version del laravel:** _9.52.15_ <br />
 **Version del PHP:** _PHP 8.1.13 (cli) (built: Nov 22 2022 15:49:14)_ <br />
 
-# Base de Datos # <br />
+## Base de Datos ## <br />
 **Tabla:** _users_ <br />
 **Estructura de la tabla users** <br />
 CREATE TABLE `users` ( <br />
@@ -31,3 +31,16 @@ CREATE TABLE `users` ( <br />
   KEY `user_email` (`user_email`) <br />
 ) ENGINE=InnoDB  AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci; <br />
 
+
+## Clonar el proyecto ## <br />
+git clone https://github.com/techjesusparra/laravel0.git nuevo_proyecto <br />
+
+## Configuraciones ## <br />
+### Conexion a la base de datos ### <br />
+
+DB_CONNECTION=_mysql_ <br />
+DB_HOST=_<Servidor de la base de datos>_ <br />
+DB_PORT=_3306_ <br />
+DB_DATABASE=_<Nombre de la base de datos>_ <br />
+DB_USERNAME=_<Usuario de la base de datos>_ <br />
+DB_PASSWORD=_<Contraseña>_ <br />
